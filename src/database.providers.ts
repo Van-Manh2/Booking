@@ -1,10 +1,9 @@
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
-import * as mongoose from 'mongoose';
-
-export const databaseProviders = [
-  {
-    provide: 'DATABASE_CONNECTION',
-    useFactory: (): Promise<typeof mongoose> =>
-      mongoose.connect('mongodb://localhost:27017/Booking'),
-  },
-];
+@Module({
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost:27017/Booking'), 
+  ],
+})
+export class AppModule {}
